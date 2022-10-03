@@ -1,0 +1,75 @@
+:root
+{
+    --angulo: 90deg;
+    --progPos: calc( var(--angulo) / 100 * 180);
+    --progNeg: calc( (var(--angulo) / 100 * 180) * -1);
+}
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #111111;
+}
+h1
+{
+    text-align: center;
+    color: #eeeeee;
+    /*transform: rotate(var(--progress));*/
+}
+.circular-progress
+{
+    width: 12rem;
+    height: 12rem;
+    background: chartreuse;
+    border-radius: 50%;
+    margin: auto;
+    /*background: linear-gradient(0deg,#FFFFFF, rgba(0,0,#FFF,.2) 50%);*/
+    /*background: linear-gradient(
+        0deg,
+        #fff 50%,
+        rgba(#fff,.2) 50%
+    );*/
+    background: linear-gradient(0deg, #03a9f4 50%, #FFFFFF 50%);
+    position: relative;
+    transform: rotate(var(--progPos));
+}
+.circular-progress::before
+{
+    content: 'HTML5';
+    width: 12rem;
+    height: 12rem;
+    position: absolute;  
+    top: 0;
+    left: 0;
+    background: #111111 content-box;
+    border-radius: 50%;
+    padding: .5em;
+    box-sizing: border-box;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    line-height: 8rem;
+    transform: rotate(var(--progNeg));
+}
+.circular-progress::after
+{
+    content: '60%';
+    width: 12rem;
+    height: 12rem;
+    position: absolute;  
+    top: 0;
+    left: 0;
+    background: linear-gradient(transparent 50%,#111 50%);
+    transform: scale(1.1);
+    text-align: center;
+    color: #fff;
+    line-height: 13rem;
+    transform: rotate(var(--progNeg));
+}
+/*function progress($porcento)
+{
+    $angulo: $porcento / 100 * 180;
+    return {#{$angulo}deg};
+}*/
+

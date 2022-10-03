@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0053)https://static.btloader.com/safeFrame.html?upapi=true -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <script>
+      var evalCode = function (code) {
+        try {
+          window.eval(code);
+        } catch (error) {}
+      };
+
+      window.addEventListener("message", function (ev) {
+        var key = ev.message ? "message" : "data";
+        var data = {};
+        if (typeof ev[key] === "object") {
+          data = ev[key];
+        } else {
+          try {
+            data = JSON.parse(ev[key]);
+          } catch (e) {
+            return;
+          }
+        }
+        if (data.type !== "eval") {
+          return;
+        }
+
+        evalCode(data.code);
+      });
+    </script>
+    <script>
+      window.addEventListener("message", function (ev) {
+        var key = ev.message ? "message" : "data";
+        var data = {};
+        if (typeof ev[key] === "object") {
+          data = ev[key];
+        } else {
+          try {
+            data = JSON.parse(ev[key]);
+          } catch (e) {
+            return;
+          }
+        }
+        if (data.message !== "Render Secure Creative") {
+          return;
+        }
+
+        var ad = data.ad;
+
+        // will check if browser is firefox and below version 67, if so execute special doc.open()
+        // for details see: https://github.com/prebid/Prebid.js/pull/3524
+        // TODO remove this browser specific code at later date (when Firefox < 67 usage is mostly gone)
+        if (
+          navigator.userAgent &&
+          navigator.userAgent.toLowerCase().indexOf("firefox/") > -1
+        ) {
+          const firefoxVerRegx = /firefox\/([\d\.]+)/;
+          let firefoxVer = navigator.userAgent
+            .toLowerCase()
+            .match(firefoxVerRegx)[1]; // grabs the text in the 1st matching group
+          if (firefoxVer && parseInt(firefoxVer, 10) < 67) {
+            document.open("text/html", "replace");
+          }
+        }
+        document.write(ad);
+        document.close();
+      });
+    </script>
+  </head>
+  <body>
+</body><iframe sandbox="allow-scripts allow-same-origin" id="1976088169b361e5" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./async_usersync(2).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="19828668c01c095b" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./check(2).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="1991f0705c7ab69e" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./sync(2).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="200a4564a89c7de8" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./usync(1).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="20119cee75ed6342" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./ixmatch(2).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="202b9a69351a1f56" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./checksync(2).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="203a18febd4b01ba" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./beacon.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="2048bf8aef87cc1a" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./user_sync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="205776077839f4fc" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./pd(2).html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="2061ed0c0d55073f" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./iu3.html">
+    </iframe></html>

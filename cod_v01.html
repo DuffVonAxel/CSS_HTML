@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CoD Calculator</title>
+    </head>
+
+    <style>
+        body {background-color: #ffffff;}
+        a{color:#0000ff}a:visited{color: #0000ff}a:hover{color:#ee0000;text-decoration:none}
+        h2{font-family: Verdana, Arial, Sans-Serif; font-size: 16px; margin: 0px;}
+        td{color:#000000;font-family: Verdana, Arial, Sans-Serif; font-size: 12px; margin: 0px;}
+        form{color:#000000;font-family: Verdana, Arial, Sans-Serif; font-size: 12px; margin: 0px;}
+    </style>
+
+    <script type="text/javascript" language="JavaScript">
+        function initArray() 
+        {
+            this.length = initArray.arguments.length;
+            for (var i = 0; i < this.length; i++) this[i] = initArray.arguments[i];
+        }
+        function binhex(value)
+        {
+            var retval = '';
+            var ConvArray = new initArray(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F');
+            var intnum;
+            var tmpnum;
+            var i = 0;
+                
+            intnum = parseInt(value,10);
+            if (isNaN(intnum)){retval = 'NaN';}
+            else
+            {
+                while (intnum > 0.9)
+                {
+                    i++;
+                    tmpnum = intnum;
+                    // concatena e retorna string com novo digito:
+                    retval = ConvArray[tmpnum % 16] + retval;  
+                    intnum = Math.floor(tmpnum / 16);
+                    if (i > 100)
+                    {
+                        // quebra loops infinitos
+                        retval = 'NaN';
+                        break;
+                    }
+                }
+            }
+            return retval;
+        }
+    </script>
+    <script type="text/javascript" language="JavaScript">
+        function clearstr(string) 
+        {
+            var tstring = "";
+            string = '' + string;
+            splitstring = string.split(",");
+            for(i = 0; i < splitstring.length; i++) tstring += splitstring[i];
+            return tstring;
+        }
+    </script>
+    <script language="javascript" type="text/javascript">
+        function TotalCheckedValues() 
+        {
+            var total = 0;
+            var cod_result = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+            if(document.F2.msc0.checked == true) { cod_result[10] = 1; }
+            if(document.F2.msc1.checked == true) { cod_result[7] = 1; }
+            if(document.F2.msc2.checked == true) { cod_result[6] = 1; }
+            if(document.F2.msc3.checked == true) { cod_result[5] = 1; }
+            if(document.F2.msc4.checked == true) { cod_result[4] = 1; }
+            if(document.F2.msc5.checked == true) { cod_result[3] = 1; }
+            if(document.F2.msc6.checked == true) { cod_result[2] = 1; }
+            if(document.F2.msc7.checked == true) { cod_result[1] = 1; }
+            if(document.F2.msc8.checked == true) { cod_result[0] = 1; }
+                   
+            if(document.F2.mdc[0].checked == true) { cod_result[15] = 1; }
+            if(document.F2.mdc[1].checked == true) { cod_result[14] = 1; }
+            if(document.F2.mdc[2].checked == true) { cod_result[15] = 1; cod_result[14] = 1;}
+            if(document.F2.mdc[3].checked == true) { cod_result[13] = 1; }
+            if(document.F2.mdc[4].checked == true) { cod_result[13] = 1; cod_result[15] = 1;}
+            if(document.F2.mdc[5].checked == true) { cod_result[13] = 1; cod_result[14] = 1;}
+            if(document.F2.mdc[6].checked == true) { cod_result[13] = 1; cod_result[14] = 1; cod_result[15] = 1;}
+            if(document.F2.mdc[7].checked == true) { cod_result[12] = 1; }
+            if(document.F2.mdc[8].checked == true) { }
+            if(document.F2.mdc[9].checked == true) { cod_result[11] = 1; cod_result[12] = 1; cod_result[13] = 1; cod_result[14] = 1; cod_result[15] = 1;}
+                   
+            if(document.F2.min00.checked == true) { }
+            if(document.F2.min01.checked == true) { cod_result[21] = 1; }
+            if(document.F2.min02.checked == true) { cod_result[20] = 1; }
+            if(document.F2.min03.checked == true) { cod_result[21] = 1; cod_result[20] = 1; }
+            if(document.F2.min04.checked == true) { cod_result[19] = 1; }
+            if(document.F2.min05.checked == true) { cod_result[21] = 1; cod_result[19] = 1; }
+            if(document.F2.min06.checked == true) { cod_result[20] = 1; cod_result[19] = 1;}
+                
+            if(document.F2.min10.checked == true) { }
+            if(document.F2.min11.checked == true) { cod_result[21] = 1; }
+            if(document.F2.min12.checked == true) { cod_result[20] = 1; }
+            if(document.F2.min13.checked == true) { cod_result[21] = 1; cod_result[20] = 1; }
+            if(document.F2.min14.checked == true) { cod_result[19] = 1; }
+            if(document.F2.min15.checked == true) { cod_result[21] = 1; cod_result[19] = 1; }
+                
+            if(document.F2.min20.checked == true) { }
+            if(document.F2.min21.checked == true) { cod_result[18] = 1; }
+            if(document.F2.min22.checked == true) { cod_result[17] = 1; }
+            if(document.F2.min23.checked == true) { cod_result[18] = 1; cod_result[17] = 1; }
+            if(document.F2.min24.checked == true) { cod_result[16] = 1; }
+            if(document.F2.min25.checked == true) { cod_result[18] = 1; cod_result[16] = 1; }
+            if(document.F2.min26.checked == true) { cod_result[17] = 1; cod_result[16] = 1; }
+            if(document.F2.min27.checked == true) { cod_result[18] = 1; cod_result[17] = 1; cod_result[16] = 1; }
+                
+            if(document.F2.min30.checked == true) { }
+            if(document.F2.min31.checked == true) { cod_result[21] = 1; }
+            if(document.F2.min32.checked == true) { cod_result[20] = 1; }
+            if(document.F2.min33.checked == true) { cod_result[19] = 1; }
+            if(document.F2.min34.checked == true) { cod_result[21] = 1; cod_result[19] = 1; }
+            if(document.F2.min35.checked == true) { cod_result[20] = 1; cod_result[19] = 1; }
+            if(document.F2.min36.checked == true) { cod_result[21] = 1; cod_result[20] = 1; cod_result[19] = 1;}
+            if(document.F2.min37.checked == true) { cod_result[18] = 1; }
+            if(document.F2.min38.checked == true) { cod_result[21] = 1; cod_result[18] = 1; }
+            if(document.F2.min39.checked == true) { cod_result[20] = 1; cod_result[18] = 1; }
+                
+            if(document.F2.min310.checked == true) { cod_result[21] = 1; cod_result[20] = 1; cod_result[18] = 1;}
+            if(document.F2.min311.checked == true) { cod_result[19] = 1; cod_result[18] = 1; }
+            if(document.F2.min312.checked == true) { cod_result[21] = 1; cod_result[19] = 1; cod_result[18] = 1;}
+            if(document.F2.min313.checked == true) { cod_result[20] = 1; cod_result[19] = 1; cod_result[18] = 1;}
+                   
+            if(document.F2.min314.checked == true) { cod_result[21] = 1; cod_result[20] = 1; cod_result[19] = 1; cod_result[18] = 1;}
+            if(document.F2.min315.checked == true) { cod_result[17] = 1; }
+            if(document.F2.min316.checked == true) { cod_result[20] = 1; cod_result[17] = 1; }
+                   
+            if(document.F2.min40.checked == true) { }
+            if(document.F2.min41.checked == true) { cod_result[17] = 1; }
+            if(document.F2.min42.checked == true) { cod_result[16] = 1; }
+            if(document.F2.min43.checked == true) { cod_result[17] = 1; cod_result[16] = 1; }
+            if(document.F2.min44.checked == true) { }
+            if(document.F2.min45.checked == true) { cod_result[21] = 1; }
+            if(document.F2.min46.checked == true) { cod_result[20] = 1; }
+            if(document.F2.min47.checked == true) { cod_result[21] = 1; cod_result[20] = 1; }
+            if(document.F2.min48.checked == true) { cod_result[19] = 1; }
+            if(document.F2.min49.checked == true) { cod_result[21] = 1; cod_result[19] = 1; }
+            if(document.F2.min410.checked == true) { cod_result[20] = 1; cod_result[19] = 1; }
+                
+            if(document.F2.min50.checked == true) { cod_result[19] = 1; }
+            if(document.F2.min51.checked == true) { cod_result[18] = 1; }
+            if(document.F2.min52.checked == true) { cod_result[17] = 1; }
+            if(document.F2.min53.checked == true) { cod_result[16] = 1; }
+                     
+            if(document.F2.min60.checked == true) { cod_result[21] = 1; }
+            if(document.F2.min61.checked == true) { cod_result[20] = 1; }
+            if(document.F2.min62.checked == true) { cod_result[21] = 1; cod_result[20] = 1; }
+            if(document.F2.min63.checked == true) { cod_result[19] = 1; }
+            if(document.F2.min64.checked == true) { cod_result[21] = 1; cod_result[19] = 1;}
+                
+            if(document.F2.min70.checked == true) { cod_result[21] = 1; }
+            if(document.F2.min71.checked == true) { cod_result[20] = 1; }
+            if(document.F2.min72.checked == true) { cod_result[21] = 1; cod_result[20] = 1; }
+            if(document.F2.min73.checked == true) { cod_result[19] = 1; }
+            if(document.F2.min74.checked == true) { cod_result[21] = 1; cod_result[19] = 1;}
+                
+            cc = clearstr(cod_result.join())
+
+            document.F2.BV.value = cc;
+            tmpvar = parseInt(cc,2);
+            document.F2.HV.value = "0x"+binhex(tmpvar);
+        }
+    </script>
+    <script language="JavaScript">
+        function tgl(Click_Menu)
+        {
+            document.getElementById('mindc0').style.display='none';
+            document.getElementById('mindc1').style.display='none';
+            document.getElementById('mindc2').style.display='none';
+            document.getElementById('mindc3').style.display='none';
+            document.getElementById('mindc4').style.display='none';
+            document.getElementById('mindc5').style.display='none';
+            document.getElementById('mindc6').style.display='none';
+            document.getElementById('mindc7').style.display='none';
+            document.getElementById('blank').style.display='none';
+    
+            document.F2.min00.checked = false
+            document.F2.min01.checked = false
+            document.F2.min02.checked = false
+            document.F2.min03.checked = false
+            document.F2.min04.checked = false
+            document.F2.min05.checked = false
+            document.F2.min06.checked = false
+    
+            document.F2.min10.checked = false
+            document.F2.min11.checked = false
+            document.F2.min12.checked = false
+            document.F2.min13.checked = false
+            document.F2.min14.checked = false
+            document.F2.min15.checked = false
+    
+            document.F2.min20.checked = false
+            document.F2.min21.checked = false
+            document.F2.min22.checked = false
+            document.F2.min23.checked = false
+            document.F2.min24.checked = false
+            document.F2.min25.checked = false
+            document.F2.min26.checked = false
+            document.F2.min27.checked = false
+    
+            document.F2.min30.checked = false
+            document.F2.min31.checked = false
+            document.F2.min32.checked = false
+            document.F2.min33.checked = false
+            document.F2.min34.checked = false
+            document.F2.min35.checked = false
+            document.F2.min36.checked = false
+            document.F2.min37.checked = false
+            document.F2.min38.checked = false
+            document.F2.min39.checked = false
+            document.F2.min310.checked = false
+            document.F2.min311.checked = false
+            document.F2.min312.checked = false
+            document.F2.min313.checked = false
+            document.F2.min314.checked = false
+            document.F2.min315.checked = false
+            document.F2.min316.checked = false
+    
+            document.F2.min40.checked = false
+            document.F2.min41.checked = false
+            document.F2.min42.checked = false
+            document.F2.min43.checked = false
+            document.F2.min44.checked = false
+            document.F2.min45.checked = false
+            document.F2.min46.checked = false
+            document.F2.min47.checked = false
+            document.F2.min48.checked = false
+            document.F2.min49.checked = false
+            document.F2.min410.checked = false
+    
+            document.F2.min50.checked = false
+            document.F2.min51.checked = false
+            document.F2.min52.checked = false
+            document.F2.min53.checked = false
+    
+            document.F2.min60.checked = false
+            document.F2.min61.checked = false
+            document.F2.min62.checked = false
+            document.F2.min63.checked = false
+            document.F2.min64.checked = false
+    
+            document.F2.min70.checked = false
+            document.F2.min71.checked = false
+            document.F2.min72.checked = false
+            document.F2.min73.checked = false
+            document.F2.min74.checked = false
+    
+            Click_Menu.style.display = "";
+        }
+    </script>
+
+    <body leftmargin=10 topmargin=0 bottommargin=0>
+            <br>
+            <h2 align=center>Bluetooth Class of Device/Service (CoD) Generator</h2>
+            <br>
+            <table><tr><td valign=top width=430>
+            <form name="F2">
+            <b># Major Service Class</b>
+            <br><input type="checkbox" name="msc0" onclick="TotalCheckedValues()">Limited Discoverable Mode
+            <br><input type="checkbox" name="msc1" onclick="TotalCheckedValues()">Positioning <font color="#aaaaaa">(location identification</font>
+            <br><input type="checkbox" name="msc2" onclick="TotalCheckedValues()">Networking <font color="#aaaaaa">(LAN, Ad hoc etc)</font>
+            <br><input type="checkbox" name="msc3" onclick="TotalCheckedValues()">Rendering <font color="#aaaaaa">(printing, speaker etc)</font>
+            <br><input type="checkbox" name="msc4" onclick="TotalCheckedValues()">Capturing <font color="#aaaaaa">(scanner, microphone etc)</font>
+            <br><input type="checkbox" name="msc5" onclick="TotalCheckedValues()">Object Transfer <font color="#aaaaaa">(v-inbox, v-folder etc)</font>
+            <br><input type="checkbox" name="msc6" onclick="TotalCheckedValues()">Audio <font color="#aaaaaa">(speaker, microphone, headset service etc)</font>
+            <br><input type="checkbox" name="msc7" onclick="TotalCheckedValues()">Telephony <font color="#aaaaaa">(cordless telephony, modem, headset service etc)</font>
+            <br><input type="checkbox" name="msc8" onclick="TotalCheckedValues()">Information <font color="#aaaaaa">(WEB-server, WAP-server etc)</font>
+            <br>
+            
+            <br><b># Major Device Class</b>
+            <br><input type="radio" name="mdc" onClick="tgl(mindc0); TotalCheckedValues();">Computer <font color="#aaaaaa">(desktop,notebook, PDA, organizers etc )</font>
+            <br><input type="radio" name="mdc" onClick="tgl(mindc1); TotalCheckedValues();">Phone <font color="#aaaaaa">(cellular, cordless, payphone, modem)</font>
+            <br><input type="radio" name="mdc" onClick="tgl(mindc2); TotalCheckedValues();">LAN/Network Access point
+            <br><input type="radio" name="mdc" onClick="tgl(mindc3); TotalCheckedValues();">Audio/Video <font color="#aaaaaa">(headset, speaker, stereo, video display etc</font>
+            <br><input type="radio" name="mdc" onClick="tgl(mindc4); TotalCheckedValues();">Peripheral <font color="#aaaaaa">(mouse, joystick, keyboards etc )</font>
+            <br><input type="radio" name="mdc" onClick="tgl(mindc5); TotalCheckedValues();">Imaging <font color="#aaaaaa">(printing, scanner, camera, display etc)</font>
+            <br><input type="radio" name="mdc" onClick="tgl(mindc6); TotalCheckedValues();">Wearable
+            <br><input type="radio" name="mdc" onClick="tgl(mindc7); TotalCheckedValues();">Toy
+            <br><input type="radio" name="mdc" onClick="tgl(blank); TotalCheckedValues();">Miscellaneous
+            <br><input type="radio" name="mdc" onClick="tgl(blank); TotalCheckedValues();">Uncategorized, specific device code not specified
+            <br>
+            <br><br>CoD (bin): <input type="text" name="BV" readonly size="25"> (hex): <input type="text" name="HV" readonly size="9">
+            <br><br>
+            <input type="reset" value="clear form">
+            </td><td valign=top>
+            
+            <span ID="mindc0" style="display: none">
+            <b># Minor Device Class</b>
+            <br><input type="checkbox" name="min00" onclick="TotalCheckedValues();">Uncategorized, code for device not assigned
+            <br><input type="checkbox" name="min01" onclick="TotalCheckedValues();">Desktop workstation
+            <br><input type="checkbox" name="min02" onclick="TotalCheckedValues();">Server-class computer
+            <br><input type="checkbox" name="min03" onclick="TotalCheckedValues();">Laptop
+            <br><input type="checkbox" name="min04" onclick="TotalCheckedValues();">Handheld PC/PDA (clam shell)
+            <br><input type="checkbox" name="min05" onclick="TotalCheckedValues();">Palm sized PC/PDA
+            <br><input type="checkbox" name="min06" onclick="TotalCheckedValues();">Wearable computer (watch sized)
+            <br>
+            </span>
+            
+            <span ID="mindc1" style="display: none">
+            <b># Minor Device Class</b>
+            <br><input type="checkbox" name="min10" onclick="TotalCheckedValues();">Uncategorized, code for device not assigned
+            <br><input type="checkbox" name="min11" onclick="TotalCheckedValues();">Cellular
+            <br><input type="checkbox" name="min12" onclick="TotalCheckedValues();">Cordless
+            <br><input type="checkbox" name="min13" onclick="TotalCheckedValues();">Smart phone
+            <br><input type="checkbox" name="min14" onclick="TotalCheckedValues();">Wired modem or voice gateway
+            <br><input type="checkbox" name="min15" onclick="TotalCheckedValues();">Common ISDN Access
+            <br>
+            </span>
+            
+            <span ID="mindc2" style="display: none">
+            <b># Minor Device Class
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;The LAN/Network Access Point Load Factor field</b>
+            <br><input type="checkbox" name="min20" onclick="TotalCheckedValues();">Fully available
+            <br><input type="checkbox" name="min21" onclick="TotalCheckedValues();">1 - 17% utilized
+            <br><input type="checkbox" name="min22" onclick="TotalCheckedValues();">17 - 33% utilized
+            <br><input type="checkbox" name="min23" onclick="TotalCheckedValues();">33 - 50% utilized
+            <br><input type="checkbox" name="min24" onclick="TotalCheckedValues();">50 - 67% utilized
+            <br><input type="checkbox" name="min25" onclick="TotalCheckedValues();">67 - 83% utilized
+            <br><input type="checkbox" name="min26" onclick="TotalCheckedValues();">83 - 99% utilized
+            <br><input type="checkbox" name="min27" onclick="TotalCheckedValues();">No service available
+            <br><br>
+            <table width=340><tr><td><p align="justify">The exact loading formula is not standardized. It is up to each LAN/Network Access Point implementation to determine what internal conditions to report as a utilization percentage. The only requirement is that the number reflects an ever-increasing utilization of communication resources within the box. As a recommendation, a client that locates multiple LAN/Network Access Points should attempt to connect to the one reporting the lowest load.
+            </td></tr></table>
+            </span>
+            
+            <span ID="mindc3" style="display: none">
+            <b># Minor Device Class</b>
+            <br><input type="checkbox" name="min30" onclick="TotalCheckedValues();">Uncategorized, code for device not assigned
+            <br><input type="checkbox" name="min31" onclick="TotalCheckedValues();">Wearable Headset Device
+            <br><input type="checkbox" name="min32" onclick="TotalCheckedValues();">Hands-free Device
+            <br><input type="checkbox" name="min33" onclick="TotalCheckedValues();">Microphone
+            <br><input type="checkbox" name="min34" onclick="TotalCheckedValues();">Loudspeaker
+            <br><input type="checkbox" name="min35" onclick="TotalCheckedValues();">Headphones
+            <br><input type="checkbox" name="min36" onclick="TotalCheckedValues();">Portable Audio
+            <br><input type="checkbox" name="min37" onclick="TotalCheckedValues();">Car audio
+            <br><input type="checkbox" name="min38" onclick="TotalCheckedValues();">Set-top box
+            <br><input type="checkbox" name="min39" onclick="TotalCheckedValues();">HiFi Audio Device
+            <br><input type="checkbox" name="min310" onclick="TotalCheckedValues();">VCR
+            <br><input type="checkbox" name="min311" onclick="TotalCheckedValues();">Video Camera
+            <br><input type="checkbox" name="min312" onclick="TotalCheckedValues();">Camcorder
+            <br><input type="checkbox" name="min313" onclick="TotalCheckedValues();">Video Monitor
+            <br><input type="checkbox" name="min314" onclick="TotalCheckedValues();">Video Display and Loudspeaker
+            <br><input type="checkbox" name="min315" onclick="TotalCheckedValues();">Video Conferencing
+            <br><input type="checkbox" name="min316" onclick="TotalCheckedValues();">Gaming/Toy
+            <br>
+            </span>
+            
+            <span ID="mindc4" style="display: none">
+            <b># Minor Device Class field
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keyboard/pointing device field</b>
+            <br><input type="checkbox" name="min40" onclick="TotalCheckedValues();">Not Keyboard / Not Pointing Device
+            <br><input type="checkbox" name="min41" onclick="TotalCheckedValues();">Keyboard
+            <br><input type="checkbox" name="min42" onclick="TotalCheckedValues();">Pointing device
+            <br><input type="checkbox" name="min43" onclick="TotalCheckedValues();">Combo keyboard/pointing device
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub-field for the device type</b>
+            <br><input type="checkbox" name="min44" onclick="TotalCheckedValues();">Uncategorized device
+            <br><input type="checkbox" name="min45" onclick="TotalCheckedValues();">Joystick
+            <br><input type="checkbox" name="min46" onclick="TotalCheckedValues();">Gamepad
+            <br><input type="checkbox" name="min47" onclick="TotalCheckedValues();">Remote control
+            <br><input type="checkbox" name="min48" onclick="TotalCheckedValues();">Sensing device
+            <br><input type="checkbox" name="min49" onclick="TotalCheckedValues();">Digitizer tablet
+            <br><input type="checkbox" name="min410" onclick="TotalCheckedValues();">Card Reader (e.g. SIM Card Reader)
+            </span>
+            
+            <span ID="mindc5" style="display: none">
+            <b># Minor Device Class</b>
+            <br><input type="checkbox" name="min50" onclick="TotalCheckedValues();">Display
+            <br><input type="checkbox" name="min51" onclick="TotalCheckedValues();">Camera
+            <br><input type="checkbox" name="min52" onclick="TotalCheckedValues();">Scanner
+            <br><input type="checkbox" name="min53" onclick="TotalCheckedValues();">Printer
+            <br>
+            </span>
+            
+            <span ID="mindc6" style="display: none">
+            <b># Minor Device Class</b>
+            <br><input type="checkbox" name="min60" onclick="TotalCheckedValues();">Wrist Watch
+            <br><input type="checkbox" name="min61" onclick="TotalCheckedValues();">Pager
+            <br><input type="checkbox" name="min62" onclick="TotalCheckedValues();">Jacket
+            <br><input type="checkbox" name="min63" onclick="TotalCheckedValues();">Helmet
+            <br><input type="checkbox" name="min64" onclick="TotalCheckedValues();">Glasses
+            <br>
+            </span>
+            
+            <span ID="mindc7" style="display: none">
+            <b># Minor Device Class</b>
+            <br><input type="checkbox" name="min70" onclick="TotalCheckedValues();">Robot
+            <br><input type="checkbox" name="min71" onclick="TotalCheckedValues();">Vehicle
+            <br><input type="checkbox" name="min72" onclick="TotalCheckedValues();">Doll / Action Figure
+            <br><input type="checkbox" name="min73" onclick="TotalCheckedValues();">Controller
+            <br><input type="checkbox" name="min74" onclick="TotalCheckedValues();">Game
+            <br>
+            </span>
+            
+            <span ID="blank" style="display: none">
+            </span>
+            
+            </form>
+            </td></tr></table>
+    </body>
+</html>

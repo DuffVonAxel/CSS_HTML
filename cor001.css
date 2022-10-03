@@ -1,0 +1,29 @@
+body 
+{
+    font-family: Roboto,sans-serif;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.5;
+    color: #0a0a0a;
+    background: #fefefe;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.canvasBox 
+{
+    height: auto;
+}
+canvas 
+{
+    display: inline-block;
+    vertical-align: baseline;
+    aspect-ratio: auto 770 / 463;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+blockquote, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, li, ol, p, pre, td, th, ul {
+    margin: 0;
+    padding: 0;
+}
+

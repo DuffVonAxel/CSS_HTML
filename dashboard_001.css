@@ -1,0 +1,293 @@
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+:root
+{
+    --blue:     #287bff;
+    --white:    #f0f0f0;
+    --grey:     #f5f5f5;
+    --black1:   #020202;
+    --black2:   #090909;
+}
+body
+{
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.container
+{
+    position: relative;
+    width: 100%;
+}
+.navigation
+{
+    position: fixed;
+    width: 160px; /* Largura do painel a esquerda ORG=300px*/
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue); /* Coloca uma borda a esquerda*/
+    transition: 0.5s;
+    overflow: hidden;
+}
+.navigation.active
+{
+    width: 50px; /* Largura do painel ao cliclar no menu */
+}
+.navigation ul
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.navigation ul li
+{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px; /* Arredonda canto*/
+    border-bottom-left-radius: 30px;
+}
+.navigation ul li:hover,  /* Coloca fundo branco ao passar mouse */ 
+.navigation ul li.hovered 
+{
+    background: var(--white);
+}
+.navigation ul li:nth-child(1) 
+{
+    margin-bottom: 40px;
+    pointer-events: none; /* Tira fundo branco do logo da empresa ao passar o mouse*/ 
+}
+.navigation ul li a
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none; /* Remove o sublinha do link*/
+    color: var(--white); /* Cor do texto */
+    /*color: yellow;*/
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a
+{
+    color: var(--blue); /* Trocar a cor do texto ao passar o mouse (fundo branco texto azul)*/
+}
+.navigation ul li a .icon
+{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+    /*color: yellowgreen;*/
+}
+.navigation ul li a .icon img
+{
+    width: 20px;
+    height: 20px;
+}
+.navigation ul li a .iconSvg /* Altera o SVG */
+{
+    position: relative;
+    display: block;
+    min-width: 30px;
+    height: 60px;
+    line-height: 70px;
+    /* color: yellowgreen; */
+    color: var(--white);
+}
+.navigation ul li a:hover .iconSvg
+{
+    color: var(--blue);
+}
+.navigation ul li a .title
+{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+/* Arredontadar canto externo */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    /*top: -50px;*/
+    top: -30px;
+    /*width: 50px;
+    height: 50px;*/
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    /*background: yellowgreen;*/
+    border-radius: 30px;
+    /*box-shadow: 35px 35px 0 10px var(--white);*/
+    box-shadow: 21px 21px 0 6px var(--white);
+    pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    /*bottom: -50px;
+    width: 50px;
+    height: 50px;*/
+    bottom: -30px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    /*background: yellowgreen;*/
+    border-radius: 30px; /* era 50 */
+    /*box-shadow: 35px -35px 0 10px var(--white);*/
+    box-shadow: 21px -21px 0 6px var(--white);
+    pointer-events: none;
+}
+
+
+
+/* main */
+.main
+{
+    position: absolute;
+    width: calc(100% - 160px); /* Largura do pinel central ORG=300px */
+    left: 160px; /* Posição do pinel central era 300 */ 
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+.main.active
+{
+    width: calc(100% - 80px); /*  */
+    left: 50px; /* Acompanha o valor da lragura quando menu ativo */
+}
+.topbar
+{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.toggle
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+.search
+{
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+.search label
+{
+    position: relative;
+    width: 100%;
+}
+.search label input
+{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+}
+.search label img
+{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2em;
+}
+.user
+{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.user img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cardbox
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 30px;
+}
+.cardbox .card
+{
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between; /* espaço entre texto e icone */
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+.cardbox .card .numbers
+{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: var(--blue);
+}
+.cardbox .card .cardName
+{
+    color: var(--black2);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+.cardbox .card .iconBx
+{
+    font-size: 3.5em;
+    color: var(--black2);
+    width: 35px;
+    height: 35px;
+}
+.cardbox .card:hover
+{
+    background: var(--blue);
+}
+.cardbox .card:hover .numbers,
+.cardbox .card:hover .cardName,
+.cardbox .card:hover .iconBx
+{
+    color: var(--white);
+}

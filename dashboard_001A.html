@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dasboard V001A</title>
+<link rel="stylesheet" type="text/css" href="dashboard_001.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="\icon\aperture-outline.svg"></span>
+                        <span class="title">Empresa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="\icon\home-outline.svg"></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="\icon\people-outline.svg"></span>
+                        <span class="title">Customers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="\icon\chatbubble-outline.svg"></span>
+                        <span class="title">Menssagem</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="\icon\help-outline.svg"></span>
+                        <span class="title">Ajuda</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="\icon\settings-outline.svg"></span>
+                        <span class="title">Ajustes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="\icon\lock-closed-outline.svg"></span>
+                        <span class="title">Senha</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="\icon\log-out-outline.svg"></span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- main -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <img src="\icon\menu-outline.svg" style="width:20px;height:20px;">
+                </div>
+                <!-- search -->
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <img src="\icon\search-outline.svg" style="width:20px;height:20px;">
+                    </label>
+                </div>
+                <!--- userImg --->
+                <div class="user">
+                    <img src="\icon\Aha-Soft-People-User.ico">
+                </div>
+            </div>
+            <!--- Cards --->
+            <div class="cardbox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">1,504</div>
+                        <div class="cardName">Daily Views</div>
+                    </div>
+                    <div class="iconBx"> 
+                        <img src="\icon\eye-outline.svg">
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">$7,842</div>
+                        <div class="cardName">Earnings</div>
+                    </div>
+                    <div class="iconBx"> 
+                        <img src="\icon\cash-outline.svg">
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">80</div>
+                        <div class="cardName">Sales</div>
+                    </div>
+                    <div class="iconBx"> 
+                        <img src="\icon\cart-outline.svg">
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">284</div>
+                        <div class="cardName">Comments</div>
+                    </div>
+                    <div class="iconBx"> 
+                        <img src="\icon\chatbubbles-outline.svg">
+                    </div>
+                </div>
+            </div>
+            
+            <!--- order details list --->
+
+        </div>
+    </div>
+
+    <script>
+        //Menu toggle
+        let toggle = document.querySelector('.toggle');
+        let navigation =  document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+
+        toggle.onclick = function()
+        {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+
+        // Adiciona a classe 'hovered' p/ o iem selecionado na lista
+        let list = document.querySelectorAll('.navigation li');
+        function activeLink()
+        {
+            list.forEach((item) => item.classList.remove('hovered'));
+            this.classList.add('hovered');
+        }
+        list.forEach((item) => item.addEventListener('mouserover',activeLink));
+    </script>
+
+</body>
+</html>
