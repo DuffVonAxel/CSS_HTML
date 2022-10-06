@@ -14,3 +14,117 @@ body
     overflow: hidden;
     background: #191919;
 }
+label
+{
+    position: relative;
+    width: 240px;
+    height: 80px;
+    cursor: pointer;
+    margin: 20px 0;
+}
+label input
+{
+    opacity: 0;
+}
+label .check
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: #101010;
+    border-radius: 40px;
+    box-shadow: 0 0 0 4px #101010;
+}
+label .check::before
+{
+    content: '';
+    position: absolute;
+    top: calc(50% - 4px);
+    left: -30px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FF0000;
+    transition: 0.5s;
+    box-shadow: 0 0 5px #FF0000,
+                0 0 10px #FF0000,
+                0 0 20px #FF0000,
+                0 0 40px #FF0000,
+                0 0 80px #FF0000;
+}
+label input:checked ~.check::before
+{
+    background: #101010;
+    box-shadow: none;
+}
+label .check::after
+{
+    content: '';
+    position: absolute;
+    top: calc(50% - 4px);
+    right: -30px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #101010;
+    box-shadow: none;
+}
+label input:checked ~.check::after
+{
+    
+    background: #00FF00;
+    transition: 0.5s;
+    box-shadow: 0 0 5px #00FF00,
+                0 0 10px #00FF00,
+                0 0 20px #00FF00,
+                0 0 40px #00FF00,
+                0 0 80px #00FF00;
+}
+label .btn
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 80px;
+    border-radius: 40px;
+    background: #333333;
+    transition: 0.5s;
+    box-shadow: inset 0 -20px 15px #292929,
+                inset 0 20px 15px #292929;
+}
+label .btn::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 52px;
+    height: 80px;
+    background: #252525;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    box-shadow: inset -5px -5px 15px rgba(0, 0, 0, .3);
+    filter: blur(2px);
+}
+label .btn::after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52px;
+    height: 80px;
+    background: #252525;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    box-shadow: inset -5px -5px 15px rgba(0, 0, 0, .3);
+    filter: blur(2px);
+}
+label input:checked ~.btn
+{
+    left: 50%;
+}
